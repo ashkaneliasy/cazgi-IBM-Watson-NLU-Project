@@ -58,7 +58,7 @@ app.get("/url/emotion", (req,res) => {
            }
        }
    }
-   
+
    const naturalLanguageUnderstanding = getNLUInstance();
    
    naturalLanguageUnderstanding.analyze(analyzeParams)
@@ -95,8 +95,8 @@ app.get("/url/sentiment", (req,res) => {
    naturalLanguageUnderstanding.analyze(analyzeParams)
    .then(analysisResults => {
        console.log(analysisResults);
-       console.log(JSON.stringify(analysisResults.result.keywords[1].sentiment,null,2));
-       return res.send(analysisResults.result.keywords[1].sentiment,null,2);
+       console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment,null,2));
+       return res.send(analysisResults.result.keywords[0].sentiment,null,2);
    })
    .catch(err => {
        return res.send("Could not do desired operation "+err);
@@ -162,7 +162,7 @@ app.get("/text/sentiment", (req,res) => {
    naturalLanguageUnderstanding.analyze(analyzeParams)
    .then(analysisResults => {
        console.log(analysisResults);
-       console.log(JSON.stringify(analysisResults.result.keywords[1].sentiment,null,2));
+       console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment,null,2));
        let resultAnalysis = JSON.stringify(
                 analysisResults.result.sentiment.document.sentiment
                 , null, 2);
